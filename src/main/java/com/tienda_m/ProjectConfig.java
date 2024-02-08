@@ -13,7 +13,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 /**
  *
- * @author Renzo
+ * @author Renzo..
  */
 @Configuration
 public class ProjectConfig  implements  WebMvcConfigurer{
