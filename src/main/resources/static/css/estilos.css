@@ -48,11 +48,7 @@ body {
    animation-delay: 0.5s;
 }
 
-.aviso{
-     background-color: red;
-    color:white; 
-    font-weight: bold;
-}
+
 
 aside{
     position: fixed;
