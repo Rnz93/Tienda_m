@@ -8,6 +8,7 @@ package com.tienda_m.controller;
 import com.tienda_m.domain.Categoria;
 import com.tienda_m.service.categoriaservice;
 import com.tienda_m.service.impl.FirebaseStorageServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import static org.hibernate.query.results.ResultsHelper.attributeName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,6 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Controller
 @RequestMapping("/categoria")
-
 public class categoriacontroller {
     @Autowired
     private categoriaservice categoriaservice;
@@ -38,6 +38,11 @@ public class categoriacontroller {
     }      
     @Autowired
     private FirebaseStorageServiceImpl firebaseStorageServiceImpl;
+    
+     @GetMapping("/nuevo")
+    public String categoriaNuevo(Categoria categoria) {
+        return "/categoria/modifica";
+    }
     
     @PostMapping ("/guardar")
     public String guardar(Categoria categoria, 

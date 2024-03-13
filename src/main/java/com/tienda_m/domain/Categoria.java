@@ -4,6 +4,7 @@ package com.tienda_m.domain;
 import lombok.Data;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -32,6 +33,9 @@ private String descripcion;
 private String rutaImangen;
 private boolean activo;
 
+@OneToMany
+@JoinColumn(name ="id_Categoria",updatable = false)
+private List <Producto> productos;
 
 }
 
