@@ -25,5 +25,10 @@ public interface productoservice {
     // se elimina el registro que tenga el valor de idproducto pasado
     public void delete(Producto producto);
     
-    
+     public List <Producto>
+                metodoJPA (double precioInf,double precioSup);
+                 public List <Producto>
+                metodoJPQL (double precioInf,double precioSup);
+                 public List <Producto>
+                metodoSQL (double precioInf,double precioSup);
 }
