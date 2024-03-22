@@ -73,7 +73,7 @@ public class PruebasController {
         return "/pruebas/listado2";
     }
 
-    @PostMapping("/query1")
+    @PostMapping("/query2")
     public String consultaQuery2(
             @RequestParam(value = "precioInf") double precioInf,
             @RequestParam(value = "precioSup") double precioSup,
@@ -85,7 +85,7 @@ public class PruebasController {
         return "/pruebas/listado2";
     }
 
-    @PostMapping("/query1")
+    @PostMapping("/query3")
     public String consultaQuery3(
             @RequestParam(value = "precioInf") double precioInf,
             @RequestParam(value = "precioSup") double precioSup,
@@ -93,7 +93,7 @@ public class PruebasController {
         var lista = productoservice.metodoSQL(precioInf, precioSup);
         model.addAttribute("productos", lista);
         model.addAttribute("precioInf", precioInf);
-        model.addAttribute("precioSup", precioSup);
+        model.addAttribute("precioSup", precioSup); 
         return "/pruebas/listado2";
     }
 

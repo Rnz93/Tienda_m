@@ -19,21 +19,17 @@ import java.util.List;
  */
 @Data
 @Entity
-@Table(name="categoria")
-public class Categoria implements Serializable{
+@Table(name="rol")
+public class Rol implements Serializable{
     private static final long serialVersionUID= 1L;
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name ="id_categoria")
-  private Long idCategoria;
-private String descripcion;
-private String rutaImangen;
-private boolean activo;
+    @Column (name ="id_rol")
+  private Long id_Rol;
+private String nombre;
 
-@OneToMany
-@JoinColumn(name ="id_Categoria",updatable = false)
-private List <Producto> productos;
-
+ @Column (name ="id_usuario")
+private Long idUsuario;
 }
 
 

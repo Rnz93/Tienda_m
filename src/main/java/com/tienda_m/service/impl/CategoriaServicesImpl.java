@@ -22,10 +22,10 @@ public class CategoriaServicesImpl implements categoriaservice {
     private CategoriaDao CategoriaDao;
     @Override
     @Transactional(readOnly = true) 
-    public List<Categoria> getCategorias(boolean activos) {
+    public List<Categoria> getCategorias(boolean activo) {
      var lista=CategoriaDao.findAll();
      
-     if (activos){
+     if (activo){
          lista.removeIf(c -> !c.isActivo());
      }  
       return lista;          
