@@ -54,33 +54,31 @@ public class ProjectConfig implements WebMvcConfigurer {
         registro.addViewController("/index").setViewName("index");
         registro.addViewController("/login").setViewName("login");
         registro.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
-        
 
     }
+
     @Bean
-    public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((request) 
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests((request)
                 -> request
-                        .requestMatchers("/","login","js/**","webjars/**","/registro/**")
+                        .requestMatchers("/", "login", "js/**", "webjars/**", "/registro/**")
                         .permitAll()
-                .requestMatchers("/categoria/listado","/producto/listado")
-                        .hasAnyRole("VENDEDOR")
-        .requestMatchers("/categoria/nuevo","/categoria/modificar/**",
-         "/categoria/eliminar/**","/categoria/guardar/",
-         
-         "/producto/nuevo","/producto/modificar/**",
-         "/producto/eliminar/**","/producto/guardar/",
-         "/pruebas/**"
-                ).hasRole("ADMIN")
-                .requestMatchers("/facturar/carrito")
-                .hasRole("USER")
-        ).formLogin((logout) -> logout.permitAll());
-        
-        
-        
-        return  http.build();
+                        .requestMatchers("/categoria/listado", "/producto/listado")
+                        .hasRole("VENDEDOR")
+                        .requestMatchers("/categoria/nuevo", "/categoria/modificar/**",
+                                "/categoria/eliminar/**", "/categoria/guardar/",
+                                "/producto/nuevo", "/producto/modificar/**",
+                                "/producto/eliminar/**", "/producto/guardar/",
+                                "/pruebas/**")
+                        .hasRole("ADMIN")
+                        .requestMatchers("/facturar/carrito")
+                        .hasRole("USER")
+        ).formLogin((form) -> form.loginPage("login").permitAll())
+        .logout((logout) -> logout.permitAll());
+
+        return http.build();
     }
-    
+
     //Esto solo se usa solo para pruebas
 //    @Bean
 //    public UserDetailsService users(){
@@ -101,14 +99,12 @@ public class ProjectConfig implements WebMvcConfigurer {
 //    }
     @Autowired
     private UserDetailsService userDetailsService;
-    
-    
+
     @Autowired
     public void configurerGlobal(AuthenticationManagerBuilder build)
             throws Exception {
         build.userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
-    
-    
+
 }
